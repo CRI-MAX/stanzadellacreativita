@@ -1,0 +1,85 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "img/portfolio"
+public_folder: "/img/portfolio"
+
+collections:
+  - name: "portfolio"
+    label: "Portfolio"
+    folder: "data/portfolio"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}} – {{category}}"
+    fields:
+      - label: "Titolo"
+        name: "title"
+        widget: "string"
+        hint: "Inserisci il nome del progetto creativo"
+      - label: "Descrizione"
+        name: "description"
+        widget: "text"
+        hint: "Una breve descrizione del progetto"
+      - label: "Immagine"
+        name: "image"
+        widget: "image"
+        hint: "Carica una foto del progetto"
+      - label: "Categoria"
+        name: "category"
+        widget: "select"
+        options: ["Riciclo", "Illustrazione", "Cucito", "Altro"]
+        hint: "Scegli la categoria più adatta"
+      - label: "Link esterno"
+        name: "external_link"
+        widget: "string"
+        required: false
+        hint: "Link a video, tutorial o pagina esterna (facoltativo)"
+
+  - name: "biografia"
+    label: "Biografia"
+    files:
+      - file: "data/biografia.md"
+        label: "Biografia"
+        name: "bio"
+        fields:
+          - label: "Titolo"
+            name: "title"
+            widget: "string"
+            hint: "Titolo della sezione (es. Chi sono)"
+          - label: "Testo"
+            name: "body"
+            widget: "markdown"
+            hint: "Scrivi la tua biografia in stile libero"
+          - label: "Foto"
+            name: "image"
+            widget: "image"
+            required: false
+            hint: "Una tua foto o immagine rappresentativa"
+
+  - name: "contatti"
+    label: "Contatti"
+    files:
+      - file: "data/contatti.md"
+        label: "Contatti"
+        name: "contact"
+        fields:
+          - label: "Email"
+            name: "email"
+            widget: "string"
+            hint: "Indirizzo email per essere contattata"
+          - label: "Instagram"
+            name: "instagram"
+            widget: "string"
+            required: false
+            hint: "Link al tuo profilo Instagram"
+          - label: "Facebook"
+            name: "facebook"
+            widget: "string"
+            required: false
+            hint: "Link al tuo profilo Facebook"
+          - label: "Messaggio di benvenuto"
+            name: "welcome"
+            widget: "text"
+            required: false
+            hint: "Un messaggio personale per chi visita il sito"
