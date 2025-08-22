@@ -8,6 +8,7 @@
   <link rel="icon" href="logo/favicon.png" type="image/png">
 </head>
 <body>
+  <!-- Header con logo animato -->
   <header>
     <div class="logo-container">
       <img src="logo/logo-animato.gif" alt="Logo animato" class="logo-animato">
@@ -25,12 +26,14 @@
     </nav>
   </header>
 
+  <!-- Sezione introduttiva -->
   <main>
     <section id="intro" class="intro">
       <h2>Benvenuti!</h2>
       <p>Questo è lo spazio dedicato alla fantasia, all’arte e alla manualità. Scopri le creazioni di Manuela e lasciati ispirare.</p>
     </section>
 
+    <!-- Galleria con filtri -->
     <section id="gallery" class="gallery">
       <h2>Le nostre creazioni</h2>
       <p>Scopri alcune delle opere realizzate da Manuela:</p>
@@ -43,20 +46,37 @@
       <div class="grid"></div>
     </section>
 
+    <!-- Sezione Chi siamo -->
     <section id="about" class="about">
       <h2>Chi siamo</h2>
       <p>Manuela è un’artista appassionata di tecniche manuali, decorazioni e creazioni uniche. Questo sito è il suo laboratorio digitale, dove ogni idea prende vita.</p>
     </section>
 
+    <!-- Sezione Contatti -->
     <section id="contact" class="contact">
       <h2>Contattaci</h2>
       <p>Per collaborazioni, richieste o semplici saluti, scrivici a <a href="mailto:info@creativitamanuela.it">info@creativitamanuela.it</a></p>
     </section>
   </main>
 
+  <!-- Footer -->
   <footer>
     <p>&copy; 2025 La Stanza della Creatività di Manuela. Tutti i diritti riservati.</p>
   </footer>
+
+  <!-- Chatbot Artibot -->
+  <div id="chatbot">
+    <div id="chat-header">
+      <img src="logo/artibot-avatar.png" alt="Artibot" class="avatar">
+      <span class="bot-name">Artibot – Assistente Creativo</span>
+    </div>
+    <div id="chat-window">
+      <div id="chat-log"></div>
+      <input type="text" id="user-input" placeholder="Scrivi qui..." />
+      <button onclick="sendMessage()">Invia</button>
+    </div>
+    <p class="artibot-greeting">🎨🔧 Ciao! Ho un sacco di idee geniali... alcune anche funzionano! 😄</p>
+  </div>
 
   <!-- Logo animato che si trasforma -->
   <script>
@@ -75,7 +95,7 @@
     });
   </script>
 
-  <!-- Galleria dinamica -->
+  <!-- Galleria dinamica + chatbot -->
   <script src="script.js"></script>
 </body>
 </html>

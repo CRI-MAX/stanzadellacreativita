@@ -164,10 +164,20 @@ h2 {
   }
 }
 
+.card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .card img {
   max-width: 100%;
   border-radius: 6px;
   margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+.card img:hover {
+  transform: scale(1.03);
 }
 
 .card h3 {
@@ -191,6 +201,127 @@ footer {
   margin-top: 60px;
   font-size: 0.9em;
   color: #777;
+}
+
+/* Chatbot Artibot */
+#chatbot {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 300px;
+  background-color: #fff0e6;
+  border: 2px solid #c94f7c;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', sans-serif;
+  z-index: 1000;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+#chatbot.hidden {
+  transform: scale(0.9);
+  opacity: 0;
+}
+
+#chat-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background-color: #c94f7c;
+  color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.bot-name {
+  font-weight: bold;
+}
+
+#chat-window {
+  padding: 10px;
+}
+
+#chat-log {
+  height: 200px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+  font-size: 0.9em;
+  color: #333;
+}
+
+#chat-log::-webkit-scrollbar {
+  width: 6px;
+}
+
+#chat-log::-webkit-scrollbar-track {
+  background: #fff0e6;
+}
+
+#chat-log::-webkit-scrollbar-thumb {
+  background-color: #c94f7c;
+  border-radius: 3px;
+}
+
+#user-input {
+  width: 70%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#chat-window button {
+  width: 25%;
+  padding: 5px;
+  background-color: #c94f7c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#chat-window button:hover {
+  transform: scale(1.05);
+}
+
+/* Artibot greeting */
+.artibot-greeting {
+  text-align: center;
+  font-style: italic;
+  color: #c94f7c;
+  margin: 10px;
+  font-size: 0.95em;
+}
+
+/* Generic buttons and inputs */
+button {
+  font-family: inherit;
+  font-size: 1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:focus,
+input:focus {
+  outline: 2px solid #c94f7c;
+  outline-offset: 2px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1em;
+  margin-bottom: 10px;
 }
 
 /* Responsive layout */
@@ -249,5 +380,23 @@ footer {
   footer {
     margin-top: 40px;
     font-size: 0.8em;
+  }
+
+  #chatbot {
+    width: 90%;
+    right: 5%;
+    bottom: 10px;
+  }
+
+    #chat-log {
+    height: 150px;
+  }
+
+  #user-input {
+    width: 65%;
+  }
+
+  #chat-window button {
+    width: 30%;
   }
 }
