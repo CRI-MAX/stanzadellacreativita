@@ -1,11 +1,15 @@
-// MENU HAMBURGER
-const hamburger = document.querySelector('.hamburger');
-const menu = document.querySelector('.menu');
-hamburger.addEventListener('click', () => {
-  menu.classList.toggle('active');
+// 🌐 MENU HAMBURGER
+document.addEventListener('DOMContentLoaded', () => {
+  const hamburger = document.querySelector('.hamburger');
+  const menu = document.querySelector('.menu');
+  if (hamburger && menu) {
+    hamburger.addEventListener('click', () => {
+      menu.classList.toggle('active');
+    });
+  }
 });
 
-// FILTRI GALLERIA
+// 🎨 FILTRI GALLERIA
 document.querySelectorAll('.filters button').forEach(button => {
   button.addEventListener('click', () => {
     const category = button.dataset.filter;
@@ -16,20 +20,14 @@ document.querySelectorAll('.filters button').forEach(button => {
 function filterProjects(category) {
   const cards = document.querySelectorAll('.card');
   cards.forEach(card => {
-    if (category === 'all' || card.dataset.category === category) {
-      card.style.display = 'block';
-    } else {
-      card.style.display = 'none';
-    }
+    card.style.display = (category === 'all' || card.dataset.category === category) ? 'block' : 'none';
   });
 }
 
-// CARICAMENTO GALLERIA DINAMICA
+// 🖼️ CARICAMENTO GALLERIA DINAMICA
 fetch('data/portfolio.json')
   .then(response => {
-    if (!response.ok) {
-      throw new Error('Errore nel caricamento dei dati');
-    }
+    if (!response.ok) throw new Error('Errore nel caricamento dei dati');
     return response.json();
   })
   .then(data => {
@@ -60,51 +58,46 @@ fetch('data/portfolio.json')
     }
   });
 
-// CHATBOT ARTIBOT
+// 🤖 CHATBOT ARTIBOT CON AI BACKEND
 function sendMessage() {
   const input = document.getElementById('user-input');
   const log = document.getElementById('chat-log');
   const userText = input.value.trim();
-  if (!userText) return;
+  if (!userText || !log) return;
 
-  log.innerHTML += `<div><strong>Tu:</strong> ${userText}</div>`;
+  // Mostra il messaggio dell'utente
+  const userMsg = document.createElement('div');
+  userMsg.className = 'chat-message user';
+  userMsg.innerHTML = `<strong>Tu:</strong> ${userText}`;
+  log.appendChild(userMsg);
+
   input.value = '';
 
-  const botReply = getBotReply(userText);
-  setTimeout(() => {
-    log.innerHTML += `<div><strong>Artibot:</strong> ${botReply}</div>`;
-    log.scrollTop = log.scrollHeight;
-  }, 500);
+  // Messaggio di caricamento
+  const botMsg = document.createElement('div');
+  botMsg.className = 'chat-message bot';
+  botMsg.innerHTML = `<strong>Artibot:</strong> <em>Sto pensando...</em>`;
+  log.appendChild(botMsg);
+  log.scrollTop = log.scrollHeight;
+
+  // Invio al backend Python
+  fetch('http://localhost:5000/chat', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ message: userText })
+  })
+    .then(res => res.json())
+    .then(data => {
+      botMsg.innerHTML = `<strong>Artibot:</strong> ${data.reply}`;
+      log.scrollTop = log.scrollHeight;
+    })
+    .catch(err => {
+      botMsg.innerHTML = `<strong>Artibot:</strong> Ops! Non riesco a rispondere al momento.`;
+      console.error('Errore nella comunicazione con il backend:', err);
+    });
 }
 
-function getBotReply(message) {
-  message = message.toLowerCase();
-
-  const risposte = {
-    cucito: {
-      testo: "Il cucito è un'arte meravigliosa! Hai mai provato a creare una borsa patchwork?",
-      img: "images/tutorial-cucito.jpg"
-    },
-    pittura: {
-      testo: "Acrilico o acquerello? Posso suggerirti tecniche per entrambi!",
-      img: "images/tutorial-pittura.jpg"
-    },
-    legno: {
-      testo: "Il fai da te con il legno è super gratificante. Vuoi un progetto semplice da iniziare?",
-      img: "images/tutorial-legno.jpg"
-    },
-    idee: {
-      testo: "Ecco un'idea: crea un porta-pennelli riciclando barattoli di vetro decorati!",
-      img: "images/tutorial-idee.jpg"
-    }
-  };
-
-  for (let key in risposte) {
-    if (message.includes(key)) {
-      const r = risposte[key];
-      return `${r.testo}<br><img src="${r.img}" alt="Tutorial ${key}" style="width:100%; border-radius:8px;">`;
-    }
-  }
-
-  return "Che bello! Raccontami di più sul tuo progetto creativo.";
-}
+// ⌨️ Invio con tasto Invio
+document.getElementById('user-input').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') sendMessage();
+});
