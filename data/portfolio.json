@@ -1,17 +1,20 @@
 [
   {
-    "title": "Fiori d'inverno",
-    "image": "img/portfolio/fiori.jpg",
-    "description": "Acrilico su tela, 2023"
+    "title": "Sito Web Portfolio",
+    "description": "Un sito responsive per mostrare i miei lavori.",
+    "image": "images/portfolio1.jpg",
+    "category": "web"
   },
   {
-    "title": "Sogni di carta",
-    "image": "img/portfolio/sogni.jpg",
-    "description": "Collage e acquerello"
+    "title": "Logo Design",
+    "description": "Creazione di un logo moderno per un brand.",
+    "image": "images/logo1.jpg",
+    "category": "design"
   },
   {
-    "title": "Trame invisibili",
-    "image": "img/portfolio/trame.jpg",
-    "description": "Tecnica mista su legno"
+    "title": "Landing Page",
+    "description": "Pagina promozionale per un prodotto tech.",
+    "image": "images/landing.jpg",
+    "category": "web"
   }
 ]
