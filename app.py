@@ -40,6 +40,6 @@ def chat():
         print("Errore:", e)
         return jsonify({"reply": "Ops! Qualcosa è andato storto. Riprova tra poco."}), 500
 
-# Non serve in produzione su Render, ma utile per test locali
+# ⚠️ Solo per test locali. Render usa Gunicorn.
 if __name__ == '__main__':
     app.run(debug=True)

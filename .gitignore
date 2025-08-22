@@ -1,6 +1,33 @@
+# 🔐 File sensibili
 .env
 *.key
 *.pem
-replacements.txt
+
+# 🧹 File temporanei e di sistema
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+*.log
+*.sqlite3
+
+# 🛠️ File di tool e script locali
+replacements.txt
+
+# 📦 Ambienti virtuali
+venv/
+.envrc
+
+# 🧪 Test e cache
+.coverage
+htmlcov/
+.tox/
+.cache/
+.pytest_cache/
+
+# 🧼 IDE e editor
+.vscode/
+.idea/
+*.swp
+*.sublime-project
+*.sublime-workspace
