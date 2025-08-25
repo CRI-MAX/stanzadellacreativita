@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>La Stanza della Creatività – CMS</title>
+
+  <!-- Font e stile -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Lato&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --rosso-arancio: #E94F37;
+      --giallo-ocra: #F4B942;
+      --blu-profondo: #2C3E50;
+      --verde-teal: #3FB8AF;
+      --bianco-caldo: #FDF6EC;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Lato', sans-serif;
+      background-color: var(--bianco-caldo);
+      color: var(--blu-profondo);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2em;
+      color: var(--rosso-arancio);
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.1em;
+      margin-bottom: 30px;
+      text-align: center;
+      max-width: 500px;
+    }
+
+    .cms-container {
+      width: 100%;
+      max-width: 800px;
+    }
+  </style>
+
+  <!-- Netlify CMS -->
+  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+</head>
+<body>
+
+  <div class="cms-container">
+    <h1>🎨 La Stanza della Creatività – CMS</h1>
+    <p>Benvenuta Manuela! Qui puoi gestire il tuo portfolio, aggiungere nuovi progetti e raccontare la tua creatività. Usa il menu qui sotto per iniziare.</p>
+    <!-- Netlify CMS will inject the admin interface here -->
+  </div>
+
+</body>
+</html>
