@@ -6,8 +6,10 @@ import os
 app = Flask(__name__)
 CORS(app)
 
-# Inserisci la tua chiave API qui
-openai.api_key = os.getenv("OPENAI_API_KEY") or "TUO_API_KEY"
+# Imposta la chiave API da variabile d'ambiente
+openai.api_key = os.getenv("OPENAI_API_KEY")
+if not openai.api_key:
+    raise EnvironmentError("OPENAI_API_KEY non è impostata. Aggiungila alle variabili d'ambiente.")
 
 @app.route('/chat', methods=['POST'])
 def chat():
